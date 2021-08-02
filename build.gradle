@@ -1,0 +1,22 @@
+plugins {
+    id "application"
+}
+
+apply plugin : "java" 
+
+ext {
+   game = "ConnectX.ConnectXTextConsole"
+}
+
+application {
+    mainClassName = game
+}
+
+// Task that runs the registry server
+task runGame(type: JavaExec) {
+  group "ConnectX"
+  description = "Run game of Connect X"
+  classpath = sourceSets.main.runtimeClasspath
+  standardInput = System.in
+  main = game
+}
